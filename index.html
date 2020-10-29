@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Music Player</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <a onclick="playsong()" ondblclick="pausesong()">
+            <img src="audience-868074_1280.jpg" alt="" id="image">
+            </a>
+            <div class="btn-container">
+                <button class="btn" onclick="playsong()"><i class="fas fa-play"></i></button>
+                <button class="btn" onclick="pausesong()"><i class="fas fa-pause"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var deg = 2; // starting
+        var rotation_diff = 5;
+
+        var rotation;
+
+
+        var mysong = new Audio();
+        mysong.src = 'bensound-betterdays.mp3';
+
+        const playsong = () =>{
+            mysong.play();
+            rotation=1;    
+            myFunction();
+        }
+
+        const pausesong = () =>{
+            mysong.pause();
+            rotation=0;
+        }
+
+
+        function myFunction() 
+        {
+        var img = document.getElementById("image");
+            
+        img.style.webkitTransform = "rotate("+deg+"deg)";
+        img.style.transform = "rotate("+deg+"deg)";
+        img.style.MozTransform = "rotate("+deg+"deg)";
+        img.style.msTransform = "rotate("+deg+"deg)";
+        img.style.OTransform = "rotate("+deg+"deg)";
+            
+            if(rotation==1) {
+            
+                setTimeout("myFunction()",50);   } 
+        deg = deg + rotation_diff;
+        }
+    </script>
+</body>
+</html>
